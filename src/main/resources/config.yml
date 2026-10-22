@@ -1,0 +1,52 @@
+# =============================================
+# Ping Command v1.0
+# Made by MahinBro001238
+# Licensed under the Apache License 2.0
+# For support or questions, join my discord server:
+# https://discord.gg/8yrbGUCFFD
+# =============================================
+
+# All text fields supports '&' color codes (e.g. "&a" = green, "&e" = yellow, "&c" = red)
+
+# Whether players can view the ping of other players or not
+# If this field is set to false, players with the pingcommand.other 
+# permission can still see the ping of another player
+# If this field is set to true, players whose pingcommand.other
+# permission has explicitly been set to false will not be allowed
+# to see the ping of other players
+view_others_ping: true
+
+good:
+  # Applies when ping is below 80 ms
+  limit: 80
+
+  # The message sent when a player is trying to see their own ping
+  own_ping: "&aPing: %ping% ms"
+
+  # The message sent when a player is trying to see other people's ping
+  other_ping: "&a%player%'s ping: %ping% ms"
+
+medium:
+  # Applies when ping is between 80 ms and less than 150 ms
+  limit: 150
+  own_ping: "&ePing: %ping% ms"
+  other_ping: "&e%player%'s ping: %ping% ms"
+
+bad:
+  # Applies when ping is 150 ms or above
+  own_ping: "&cPing: %ping% ms"
+  other_ping: "&c%player%'s ping: %ping% ms"
+
+messages:
+
+  # The message sent to a player when they don't have the permission to execute the /ping or /pingreload command
+  no_permission: "&cYou don't have permission to use this command."
+
+  # The message sent to a player when they don't have the permission to see other people's ping
+  no_permission_other: "&cYou don't have permission to view other players' ping."
+
+  # The message sent to the player when they try to see the ping of a player that does not exist
+  unknown_player: "&cPlayer %player% does not exist."
+
+  # The message sent to the player when they use the command incorrectly
+  incorrect_usage: "&cIncorrect use of command.\nPlease use /ping to see your own ping\nor use /ping <player> to see another player's ping."

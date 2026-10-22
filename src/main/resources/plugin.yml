@@ -1,0 +1,21 @@
+name: PingCommand
+version: 1.0
+main: com.mahin.Plugin
+api-version: 1.16
+permissions:
+  pingcommand.ping:
+    description: Allows use of /ping <player> command
+    default: true
+  pingcommand.other:
+    description: Allows players to view the ping of other players
+    default: false
+  pingcommand.reload:
+    description: Allows a player to reload the plugin's config
+    default: op
+commands:
+  ping:
+    usage: /ping [player]
+    description: Get a player's ping
+  pingreload:
+    usage: /pingreload
+    description: Reload the plugin's config
