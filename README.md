@@ -27,3 +27,6 @@ For support or questions, join my discord server: https://discord.gg/8yrbGUCFFD
 
 ## **License**
 Licensed under the Apache License 2.0
+
+## **Other Projects**
+Check out other cool stuff I made at https://modrinth.com/user/MahinBro001238
