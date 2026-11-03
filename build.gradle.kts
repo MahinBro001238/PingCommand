@@ -2,7 +2,7 @@ plugins {
     java
 }
 group = "com.mahin"
-version = "1.0"
+version = "1.0.1"
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
