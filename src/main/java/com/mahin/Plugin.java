@@ -7,8 +7,12 @@ import java.net.URI;
 import java.util.Scanner;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.event.Listener;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-public final class Plugin extends JavaPlugin {
+public final class Plugin extends JavaPlugin implements Listener {
+    private String UpdateStatus;
     private String ParseColors(String RawText) {
         return ChatColor.translateAlternateColorCodes('&', RawText);
     }
@@ -30,7 +34,6 @@ public final class Plugin extends JavaPlugin {
     }
     @Override
     public void onEnable() {
-        String UpdateStatus;
         String VersionString = "";
         int VersionInteger = 0;
         HttpURLConnection GithubRequest = null;
@@ -53,19 +56,20 @@ public final class Plugin extends JavaPlugin {
                 scanner.close();
             }
         }
-        if (VersionInteger > 10) {
-            UpdateStatus = "There is a new update: v" + VersionString;
+        if (VersionInteger > 101) {
+            UpdateStatus = "There is a new version available: v" + VersionString;
         }
-        else if (VersionInteger == 10) {
+        else if (VersionInteger == 101) {
             UpdateStatus = "You are using the latest version";
         }
         else {
             UpdateStatus = "Unable to check for updates";
         }
         new Metrics(this, 34835);
+        Bukkit.getPluginManager().registerEvents(this, this);
         saveDefaultConfig();
         getLogger().info("=============================================");
-        getLogger().info("Ping Command v1.0");
+        getLogger().info("Ping Command v1.0.1");
         getLogger().info("Made by MahinBro001238");
         getLogger().info("Licensed under the Apache License 2.0");
         getLogger().info("For support: https://discord.gg/8yrbGUCFFD");
@@ -73,9 +77,16 @@ public final class Plugin extends JavaPlugin {
         getLogger().info("Ping Command has been enabled");
         getLogger().info("=============================================");
     }
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        if (UpdateStatus.startsWith("There is a new version available: v") && player.hasPermission("pingcommand.reload")) {
+            player.sendMessage(ChatColor.YELLOW + "[Ping Command] " + UpdateStatus);
+        }
+    }
     @Override
     public void onDisable() {
-        getLogger().info("Ping Command v1.0 has been disabled");
+        getLogger().info("Ping Command v1.0.1 has been disabled");
     }
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
