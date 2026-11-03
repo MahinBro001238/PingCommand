@@ -1,5 +1,5 @@
 name: PingCommand
-version: 1.0
+version: 1.0.1
 main: com.mahin.Plugin
 api-version: 1.16
 permissions:
